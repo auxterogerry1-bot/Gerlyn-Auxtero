@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Bebii 💓</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Lora:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+:root {
+    --plum: #321b38;
+    --purple: #75518c;
+    --lavender: #b99acb;
+    --green: #829b79;
+    --light-green: #c1d1b8;
+    --cream: #f7f0e8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, #594064, transparent 45%),
+        radial-gradient(circle at bottom right, #344b3d, transparent 45%),
+        #1c1522;
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    padding: 25px 15px 50px;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 720px;
+    margin: 35px auto;
+    position: relative;
+    z-index: 2;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+    animation: fadeIn 1.2s ease;
+}
+
+.header .small {
+    color: var(--light-green);
+    letter-spacing: 5px;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 8vw, 53px);
+    font-weight: 500;
+    color: #ead8f2;
+}
+
+.header p {
+    color: #c9b9ce;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.window {
+    background: rgba(45, 31, 51, 0.94);
+    border: 1px solid rgba(205, 177, 219, 0.23);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0,0,0,.35);
+    backdrop-filter: blur(12px);
+}
+
+.window-top {
+    background: rgba(255,255,255,.045);
+    padding: 15px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.dots {
+    display: flex;
+    gap: 7px;
+}
+
+.dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.dot:nth-child(1) { background: #b98b9b; }
+.dot:nth-child(2) { background: #c6ad7d; }
+.dot:nth-child(3) { background: #91a989; }
+
+.window-label {
+    font-size: 11px;
+    color: #c9b9ce;
+    letter-spacing: 1px;
+}
+
+.content {
+    padding: clamp(22px, 6vw, 42px);
+}
+
+.intro {
+    text-align: center;
+    padding: 20px 0 35px;
+}
+
+.heart-icon {
+    font-size: 42px;
+    display: block;
+    margin-bottom: 18px;
+    animation: heartbeat 1.8s infinite;
+}
+
+.intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 28px;
+    color: #e7d4ed;
+}
+
+.intro p {
+    font-size: 13px;
+    color: #c5b8c9;
+    margin-top: 10px;
+    line-height: 1.8;
+}
+
+.open-btn {
+    border: none;
+    padding: 14px 25px;
+    border-radius: 30px;
+    background: linear-gradient(120deg, #9875a8, #829b79);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: .3s;
+    box-shadow: 0 7px 25px rgba(0,0,0,.2);
+}
+
+.open-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.12);
+}
+
+.letter {
+    display: none;
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 30px;
+    max-width: 68ch;
+    margin: 0 auto;
+}
+
+.letter.visible {
+    display: block;
+}
+
+.letter p {
+    color: #eee5ef;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.95;
+    letter-spacing: 0.08px;
+    text-align: left;
+    overflow-wrap: break-word;
+    margin: 0 auto 1.55em;
+    max-width: 66ch;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.letter p strong {
+    color: #d9c1e7;
+    font-weight: 700;
+}
+
+.letter p.paragraph-show {
+    animation: paragraphPop .45s ease forwards;
+}
+
+.letter .greeting {
+    color: #dcbfe9;
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    line-height: 1.4;
+    margin-bottom: 1.2em;
+}
+
+.letter .highlight {
+    color: #c5d9b9;
+}
+
+.letter .ending {
+    color: #e6c7ef;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    line-height: 1.75;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+}
+
+.line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #9579a5, #829b79, transparent);
+    margin: 30px 0;
+    opacity: 0;
+}
+
+.line.paragraph-show {
+    animation: paragraphPop .45s ease forwards;
+}
+
+.footer {
+    text-align: center;
+    padding-top: 30px;
+    color: #b8a9bc;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.footer span {
+    color: #c5d9b9;
+}
+
+.popup {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translate(-50%, 30px);
+    background: #f2e8f4;
+    color: #38243e;
+    border-radius: 30px;
+    padding: 13px 21px;
+    font-size: 13px;
+    text-align: center;
+    width: max-content;
+    max-width: 90%;
+    opacity: 0;
+    pointer-events: none;
+    transition: .4s ease;
+    z-index: 20;
+    box-shadow: 0 10px 35px rgba(0,0,0,.3);
+}
+
+.popup.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -40px;
+    color: #d8a9dc;
+    font-size: 18px;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp linear forwards;
+    opacity: .7;
+}
+
+.love-button {
+    display: block;
+    margin: 25px auto 0;
+    border: 1px solid rgba(204,177,219,.4);
+    background: rgba(255,255,255,.06);
+    color: #e8d4ef;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: .3s;
+}
+
+.love-button:hover {
+    background: rgba(255,255,255,.13);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes paragraphPop {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: .7; }
+    to {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    body { padding: 15px 12px 35px; }
+    .container { margin: 20px auto; }
+    .content { padding: 22px 19px; }
+    .letter p {
+        font-size: 15px;
+        line-height: 1.9;
+        margin-bottom: 1.45em;
+    }
+    .letter .greeting { font-size: 25px; }
+    .letter .ending { font-size: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <div class="small">A little something for you</div>
+        <h1>MyBebii 💓</h1>
+        <p>Made with all the love I could put into words.</p>
+    </header>
+
+    <main class="window">
+
+        <div class="window-top">
+            <div class="dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="window-label">a letter from my heart</div>
+            <span>💓</span>
+        </div>
+
+        <div class="content">
+
+            <section class="intro" id="intro">
+                <span class="heart-icon">💓</span>
+                <h2>To the woman I love</h2>
+                <p>
+                    There's something I've been wanting to tell you.<br>
+                    So take your time, mylovee. This one's for you.
+                </p>
+
+                <button class="open-btn" onclick="openLetter()">
+                    Open my little letter 💓
+                </button>
+            </section>
+
+            <article class="letter" id="letter">
+
+                <p class="greeting">My lovee,</p>
+
+                <p>mylovee, i know i say “i love you” and “i miss you” so many times, and maybe sometimes you wonder how i can keep saying the same words over and over again. but bebii, i hope you understand that no matter how many times i say them, the meaning will never become any less real. every “i love you” comes from a part of my heart that i don't even know how to explain. every “i miss you” comes from that little part of my day that feels incomplete when i can't share it with you. and every time i call you mylovee, i'm reminded that somehow, out of all the people i could have met in this world, i got to meet you. you, of all people. the person who would slowly become someone so precious to me that sometimes, even i can't believe how deeply i've fallen.</p>
+
+                <p>i don't just say these things because they sound sweet, and i don't say them just to make you smile for a moment. i say them because they're the closest words i have to describe something that feels so much bigger than words themselves. sometimes, i want to tell you everything i feel, but when i try to put it into sentences, i realize that even the longest message could never fully explain what you've become to me. it's funny, isn't it, bebii? how one person can enter your life without knowing just how much they'll change it. how someone can start as a person you simply know, then become someone you look forward to, someone you worry about, someone you pray for, and eventually, someone you can't imagine leaving out of the future you're dreaming about.</p>
+
+                <p>before you came into my life, i honestly never imagined that i'd feel this way about someone. i never thought i'd find myself thinking about another person's happiness as much as i think about yours. i never thought i'd become the kind of person who could smile at the smallest notification just because it came from you. i never thought that hearing about your day, listening to your random stories, reading your messages, or simply knowing you're there could make such a difference in my life. but then you happened, mylovee. and little by little, without me even realizing it, you became part of my everyday thoughts. you became someone i wanted to tell things to, even the most unimportant things that nobody else would probably care about. because somehow, when it's you, even the smallest details feel worth sharing.</p>
+
+                <p>and that's what i love about us, bebii. i don't need every moment with you to be grand or perfect. i don't need expensive things, extraordinary dates, or a life where everything goes exactly the way we planned. i just want the ordinary moments, too. i want the random conversations that go nowhere, the silly jokes that make us laugh for no reason, the sleepy good mornings, the little updates about our day, and the quiet moments when we don't even have anything important to say but still want to stay with each other. i want to know the little things that make you happy, the things that annoy you, the dreams you secretly keep in your heart, and the things you find difficult to tell anyone. i want to know you beyond the version of yourself that everyone else gets to see. i want to understand the person you are when you're tired, when you're overthinking, when you're excited about something, and when you don't have the energy to explain what you're feeling.</p>
+
+                <p>because, mylovee, i don't want to love only the happy version of you. i want to understand you as a whole person. i want to be there when you're proud of yourself, but i also want to remind you of your worth when you're disappointed in yourself. i want to celebrate your little victories, even the ones you think are too small to celebrate. i want to listen to you talk about something you're passionate about, even if i don't understand every single detail at first, because seeing you excited about something makes me happy, too. and when you're having one of those days when everything feels too much, i hope you know you don't have to force yourself to be cheerful just for me. you can tell me that you're tired. you can tell me that you're upset. you can tell me that you don't know what you're feeling. you don't always have to have the right words, bebii. sometimes, we can figure things out slowly, together.</p>
+
+                <p>and mylovee, if there's one thing i want you to understand about my feelings for you, it's that i don't want our relationship to be something that only survives when everything is easy. i know we're still learning. we're still growing, and there are probably so many things about love that we'll only understand as time goes by. there might be days when we misunderstand each other, when our emotions get the better of us, or when we struggle to explain what we really mean. there might be times when we need to take a breath, listen more carefully, and learn how to understand each other better. but i hope that when those days come, we won't immediately forget all the reasons we chose each other. i hope we can remember that we're on the same side, that the goal isn't to win against each other, but to understand each other.</p>
+
+                <p>i don't want to be the kind of person who promises you a perfect relationship and then disappears the moment things become difficult. i want to be someone who keeps learning how to love you properly. someone who can admit when i'm wrong, apologize sincerely, and make an effort to do better instead of expecting you to accept the same mistakes over and over again. i want to learn how to communicate with you, how to understand your feelings without making you feel guilty for having them, and how to make sure that even during disagreements, you still know that i respect you. because loving you isn't just about saying the sweetest things when we're happy. it's also about how i treat you when we're frustrated, how i listen when we disagree, and how willing i am to understand you even when it would be easier to assume that i'm right.</p>
+
+                <p>i never want to take your heart for granted, bebii. i never want you to become so used to being loved by me that you start wondering whether you're still important. i want to keep reminding you, through my words and especially through my actions, that you're someone i genuinely value. i want to remember the little things you tell me. i want to notice when something is bothering you. i want to ask how you're doing and actually care about the answer. and if there are moments when i fail to notice something, i hope you'll feel comfortable enough to tell me, because i don't want you to feel like you have to silently accept things that hurt you just to keep our relationship peaceful.</p>
+
+                <p>and sometimes, mylovee, i think about the things you've been through before we found each other. i think about the moments when you might have felt disappointed, misunderstood, or hurt by someone you trusted. i think about the possibility that there were days when you questioned yourself, when you wondered whether you were asking for too much, or when you tried to convince yourself that you were okay even though something inside you was hurting. and honestly, i wish you never had to experience the kind of pain that made you question the goodness you deserve from other people.</p>
+
+                <p>if i could meet the younger version of you, the version who existed before i ever knew your name, i think i'd want to sit beside her for a while. i wouldn't tell her that everything would suddenly become perfect, because i know life doesn't work that way. i wouldn't promise her that she'd never cry again or that nobody would ever disappoint her. instead, i'd tell her that her story wasn't finished yet. that the things she was going through wouldn't be the only things that defined her life. that she still had so many beautiful moments ahead of her, so many things to discover about herself, and so many reasons to keep believing that life could be kind to her, too.</p>
+
+                <p>and maybe i'd tell her that one day, she'd meet someone who would look at her and see so much more than the things that hurt her. someone who would appreciate her little habits, her random thoughts, her laughter, and even the quiet parts of her personality. someone who would want to know what makes her feel safe, what makes her smile without realizing it, and what dreams she hopes to achieve someday. someone who would remind her that she doesn't need to become a different person to deserve genuine affection.</p>
+
+                <p>i know i can't go back and change what happened before me, mylovee. i can't erase your painful memories or protect you from every difficult thing that life might bring. and i don't want to pretend that loving you means i can magically fix everything. but what i can do is keep showing up with sincerity. i can listen to you. i can respect your feelings. i can encourage you when you're doubting yourself and remind you to be gentle with yourself when you feel like you're falling behind. i can be honest with you, care for you, and do my best to make our relationship a place where both of us can grow without feeling like we have to hide who we really are.</p>
+
+                <p>i want you to know that you don't have to be strong every second of every day just because you've learned how to survive difficult moments. you can rest, bebii. you can have bad days. you can feel uncertain sometimes. you can change your mind, learn new things, and grow into different versions of yourself. i don't expect you to have everything figured out, because i don't have everything figured out either. we're both still growing, and i think one of the most beautiful things about being together is that we can learn along the way. we can encourage each other to become better people without making each other feel like we're not enough as we are right now.</p>
+
+                <p>and you know what, mylovee? i really, really hope for the best for our future. i hope for the future we're slowly building, for the relationship we're learning to take care of, and for the family we might have someday if life allows us to reach that dream together. sometimes, when i think about the future, i catch myself imagining the simplest things with you, and somehow those little thoughts make me smile more than the grandest dreams ever could.</p>
+
+                <p>i imagine us growing older, looking back at how we used to talk to each other, laughing at our old messages and remembering the little things that used to make our hearts flutter. i imagine us remembering the days when we were still figuring everything out, when we were still learning each other's habits, when a simple good morning could make our entire day, and when we'd send long messages just to explain how much we cared. maybe someday, we'll look back at the way i type these long paragraphs and you'll tease me for being so dramatic and cheesy. and i'll probably laugh, too, but deep inside, i'll be happy that i got to love you during this part of our lives.</p>
+
+                <p>i hope that someday, when we have more responsibilities and our lives become busier, we still find little ways to make each other feel special. i hope we still ask each other about our days, even when we're tired. i hope we still make time to laugh together, even when life becomes stressful. i hope we never become so busy building our future that we forget to appreciate the person standing beside us in the present. i want us to remember that a relationship isn't maintained by big promises alone. it's maintained by little choices, repeated every day. choosing to listen, choosing to communicate, choosing to respect each other's boundaries, choosing to be honest, and choosing to make time for each other even when there are a hundred other things demanding our attention.</p>
+
+                <p>i hope we both achieve the dreams we're working so hard for, mylovee. i hope we get to see each other succeed, celebrate each other's achievements, and become people we're both proud of. i hope that when one of us feels discouraged, the other knows how to offer encouragement without making the other feel weak. i hope we become each other's supporters, not because we have to carry each other's entire world, but because we want to remind each other that we don't have to face every challenge feeling alone. i want to see you become the person you've always wanted to be. i want to see you discover your strengths, explore your interests, and experience the happiness that comes from achieving something you've worked hard for.</p>
+
+                <p>and even if our dreams change along the way, i hope we keep giving each other room to grow. i want us to have our own goals, our own friendships, our own interests, and our own experiences, while still finding joy in sharing our lives with each other. i don't want our love to make either of us feel smaller. i want it to help us become more confident, more understanding, and more willing to face the world as ourselves. i want us to be able to say, “i'm proud of you,” and truly mean it, even when our paths look a little different from what we originally imagined.</p>
+
+                <p>and about our future family, bebii... gosh, even thinking about that makes my heart feel so soft. i know it's still a dream, and there's so much life for us to experience and prepare for before we ever reach that chapter. but i can't help hoping that someday, if we both still choose that future, we'll get to build a home filled with the kind of warmth and understanding that every person deserves.</p>
+
+                <p>i hope our future home will be a place where we can both breathe after a long day. a place where we can talk about what happened, laugh about the most ridiculous things, share meals, and find comfort in simply being together. i hope we create a home where neither of us feels afraid to admit that we've made a mistake, because we know that being wrong doesn't make us unworthy of respect. a home where apologies are sincere, where kindness isn't treated as a weakness, and where we remember that we're partners who are supposed to work through things together.</p>
+
+                <p>and if someday we have children, mylovee, i hope we raise them with so much patience, understanding, and gentleness. i hope they grow up knowing that they don't have to be perfect to be loved. i hope they feel safe enough to tell us when something is bothering them, when they're scared, when they're confused, and when they need help. i hope they learn that being strong doesn't mean hiding their emotions, and that being kind doesn't mean allowing other people to treat them badly. i hope we teach them to respect others, to take responsibility for their actions, and to understand that every person has feelings that deserve consideration.</p>
+
+                <p>i hope that, as their parents, we learn together, too. i know neither of us will automatically know how to do everything right. we'll make mistakes, we'll have things to learn, and we'll probably have days when we feel completely unprepared for whatever life brings. but i hope we approach those moments with humility and patience. i hope we support each other instead of blaming each other for every difficult day. i hope we remember that our family would never need us to be perfect parents or perfect people. it would need us to keep learning, keep communicating, and keep trying to make our home a place where everyone feels respected and cared for.</p>
+
+                <p>and maybe, someday, when our future children ask us how we met, i'll tell them about you with the biggest smile on my face. i'll tell them about the girl who came into my life and made me understand why the little things matter so much. i'll tell them how i used to write you these ridiculously long messages because i could never find a short enough way to explain how i felt. i'll probably leave out some of the embarrassing details because i know you might get shy, HAHAHA. but i hope i'll be able to look at you while telling our story and feel that same warmth i feel now, knowing that the girl i once dreamed of building a future with is still beside me, making new memories with me.</p>
+
+                <p>i hope that when we become older, we don't forget to be sweet to each other. i hope we still hold conversations about random things. i hope we still laugh at our own jokes, even when nobody else finds them funny. i hope we still find little reasons to celebrate each other. i hope we remember birthdays, anniversaries, and all the little dates that mean something to us. and more than anything, i hope we never allow familiarity to make us careless with each other's hearts. i hope that even after years of knowing each other, we still make the effort to understand the person the other is becoming.</p>
+
+                <p>because, mylovee, i don't just want to fall in love with you once and assume that one moment will carry us through the rest of our lives. i want to keep discovering you. i want to keep learning what makes you happy as you grow, what dreams become important to you, what things you begin to see differently, and what new parts of yourself you discover. i want us to keep meeting each other as we change, instead of expecting each other to remain exactly the same forever.</p>
+
+                <p>i'm hoping for the best for our future, bebii. i'm hoping for the best for our relationship, for our dreams, for our happiness, and for the family we might someday build. i'm hoping that we get to experience so many beautiful chapters together, but i'm also hoping that we learn how to face the difficult chapters with maturity and understanding. i'm hoping that we continue to grow into people who know how to love without hurting each other intentionally, who know how to apologize without making excuses, and who know how to forgive without pretending that nothing happened. i'm hoping that we never stop communicating, never stop appreciating each other, and never stop remembering that we're two people who deserve care, respect, and happiness.</p>
+
+                <p>i know that hoping for something doesn't guarantee that everything will happen exactly as we imagine. life can be unpredictable, and there are things we won't always be able to control. but i still want to do my part to build something meaningful with you. i want to give our relationship the care it deserves, not just by dreaming about the future, but by being mindful of how i treat you today. because our future isn't something that will magically appear one day, mylovee. it's something we begin creating through the decisions we make right now, through the way we communicate, the way we handle our differences, and the way we keep choosing honesty and kindness even when it's difficult.</p>
+
+                <p>and i want you to know that when i imagine a future with you, it's not because i think you have to be responsible for my happiness or because i need you to complete me as a person. it's because i already see so many things in you that make me want to share my life with you. i want to experience the world with you while still allowing both of us to become our own people. i want us to be able to stand on our own feet and still reach for each other's hands when we need comfort. i want us to be together because we genuinely choose each other, because we bring kindness into each other's lives, and because we keep finding reasons to build something better side by side.</p>
+
+                <p>and, bebii, i hope you never feel like you have to earn your place in my heart every single day. you don't have to be the happiest person in the world to deserve my affection. you don't have to make me laugh every time we talk. you don't have to respond perfectly to every message or know exactly what to say whenever i'm feeling emotional. you are allowed to be tired, to have your own problems, to spend time doing things you enjoy, and to take care of yourself. i want to love you in a way that gives you room to be human, because i know that you're more than just the person who makes me happy. you're a person with your own thoughts, feelings, dreams, fears, and needs, and i want to respect all of those things.</p>
+
+                <p>i hope i can become someone you feel comfortable being honest with. someone you can tell when something hurts you, even if it's something i did, because i would rather have an honest conversation that helps us grow than have you silently carry something that makes your heart heavy. i hope you can trust me enough to tell me when you need reassurance, when you need space, or when you simply need someone to listen without immediately trying to solve everything. and i hope i learn to recognize that sometimes, love isn't about finding the perfect answer. sometimes, it's about being patient enough to listen and caring enough to stay present in the conversation.</p>
+
+                <p>mylovee, i wish i could explain just how precious you are to me without sounding like i'm repeating myself, but i don't think i'll ever find a way to say it only once. there are so many little moments when i think about you and feel grateful that our paths crossed. sometimes, it's something as simple as seeing your message appear on my screen. sometimes, it's remembering something you said earlier. sometimes, it's thinking about a future that hasn't happened yet and realizing that you're the person i hope to share those moments with.</p>
+
+                <p>and every time those thoughts come to me, i find myself wanting to tell you again that i love you. not because i think you don't know it, but because i want you to hear it in different ways throughout our relationship. i want you to hear it when you're happy, when you're excited, when you're proud of yourself, and when you need a little reminder that someone genuinely cares about you. i want to say it in the ordinary moments, too, because i don't want affection to become something we only express when we're afraid of losing each other. i want us to express it because we're grateful for each other, because we appreciate what we have, and because we want to keep nurturing the relationship we've chosen.</p>
+
+                <p>and if there ever comes a day when you feel like you're not the easiest person to understand, please remember that neither am i. we're both human, bebii. we'll have our own ways of expressing ourselves, our own habits, and our own ways of dealing with difficult feelings. there will be things we'll need to explain to each other more than once. there will be things we'll misunderstand before we finally understand them. but i hope we never use those differences as reasons to stop trying. i hope we remain curious about each other's hearts, willing to ask questions instead of making assumptions, and willing to listen instead of immediately becoming defensive.</p>
+
+                <p>i want us to become the kind of couple who can look at a difficult situation and say, “okay, this is hard, but let's try to understand it together.” i want us to be able to admit when we're scared, when we're insecure, or when we're unsure about something. i want us to give each other reassurance without making each other feel ashamed for needing it. and when one of us makes a mistake, i hope we can focus on understanding the impact, making things right, and learning from it rather than simply trying to prove who was right.</p>
+
+                <p>because at the end of the day, mylovee, you're not my opponent. you're the person i'm trying to build something with. i don't want to win an argument and lose the closeness we share. i don't want to be so focused on proving my point that i forget to care about how my words affect you. and i don't want you to feel like you have to fight to be heard by me. i want to create a relationship where both of us can speak honestly, where both of us can make mistakes and take responsibility, and where both of us feel that our feelings matter.</p>
+
+                <p>i know i still have a lot to learn about being the person you deserve to be with. i'm not going to pretend that i'll always know what to do or that i'll never disappoint you. but i want to keep improving. i want to become better at listening, better at expressing myself, better at understanding your feelings, and better at showing love through actions instead of relying on words alone. i want my promises to mean something because you can see the effort behind them. i want you to experience the kind of care that isn't only beautiful in messages but also present in the way i treat you every day.</p>
+
+                <p>and maybe that's what i hope our love becomes as we grow older: something that feels warm without being suffocating, reassuring without taking away our independence, and steady without becoming careless. something that allows us to laugh freely, speak honestly, grow individually, and still enjoy coming back to each other. something where we don't have to pretend that we're always okay, because we know we can have difficult feelings without being treated like a burden. something where we celebrate each other's happiness instead of feeling threatened by it, and where we understand that loving someone means wanting them to flourish, even as life continues to change.</p>
+
+                <p>i hope that years from now, when we look back at this moment, we'll be proud of the way we treated each other. i hope we'll remember the younger versions of ourselves with kindness, knowing that we were still learning and that we did our best to grow. i hope we'll have so many memories to look back on, so many stories that only we understand, and so many little traditions that become special simply because they're ours. i hope we'll be able to say that we didn't just dream about a beautiful future. we took small, meaningful steps toward building one.</p>
+
+                <p>and if that future includes our own family, i hope we never forget that the love between us will need care, too. i hope we continue to make time for each other even when responsibilities grow. i hope we keep talking about our feelings, checking in with each other, and remembering that we are partners before anything else. i hope we become a team that knows how to share responsibilities, respect one another's efforts, and ask for help when things become overwhelming. i hope our home becomes a place where love isn't only spoken but demonstrated through patience, fairness, and everyday consideration.</p>
+
+                <p>i hope our future children, if we have them, will grow up seeing that love is not about controlling someone or expecting them to be perfect. i hope they see two people who respect each other, who know how to apologize, who can disagree without forgetting each other's dignity, and who understand that being a family means taking care of one another. i hope they see us celebrating each other's accomplishments, encouraging each other's dreams, and making room for each person's individuality. and i hope that when they make mistakes, they'll know that they can come to us for guidance without feeling that one mistake defines their entire character.</p>
+
+                <p>and you know what, bebii? i hope we also remember to take care of ourselves while we're building that future. i hope we don't rush through our lives trying to reach every milestone as quickly as possible. i hope we enjoy the stages we're in right now, learn from the experiences we have, and give ourselves enough time to grow. i want us to make memories while we're young, work toward our dreams, discover the things that make us happy, and build a foundation that can support the kind of future we want. i don't want us to love the idea of our future so much that we forget how meaningful our present can be.</p>
+
+                <p>because right now, we already have something worth appreciating. we have the chance to know each other better, to make each other smile, to learn how to communicate, and to discover what kind of relationship we want to build. we have the chance to practice patience, honesty, and understanding in the little moments. we have the chance to become better people, not because we are incomplete without each other, but because we inspire each other to keep growing. and to me, that is already something beautiful.</p>
+
+                <p>sometimes, i think about how strange it is that before we met, we were living completely separate lives. there were days when neither of us knew what the other was doing. there were moments when we were laughing about different things, worrying about different problems, and dreaming about futures that hadn't yet included each other. and then, somehow, our paths crossed. we began talking, we started getting to know each other, and little by little, a person who used to be a stranger became someone i now think about when i imagine the future.</p>
+
+                <p>it's such a simple thing when you think about it, isn't it? two people meeting in a world filled with so many people. but to me, the fact that we found each other makes our story feel special. i don't need to believe that every single thing in life was planned perfectly to feel grateful that you're here. i can simply appreciate the fact that our lives crossed and that we've had the chance to create something meaningful from that meeting.</p>
+
+                <p>and i'm grateful for you, mylovee. i'm grateful for the conversations we've shared, for the laughter, for the little moments of affection, and even for the opportunities we've had to understand each other better. i'm grateful for the parts of yourself you've allowed me to see. i'm grateful that i get to learn about your thoughts, your dreams, and the things that make you who you are. i'm grateful for the chance to love you, and i hope i never become so accustomed to having you in my life that i forget how meaningful that chance is.</p>
+
+                <p>i don't know exactly what every year ahead of us will look like, bebii. i don't know where we'll be, what challenges we'll face, what dreams we'll achieve first, or how much we'll change as time passes. but i know what i hope for. i hope we keep growing. i hope we keep being honest with each other. i hope we learn how to face our problems with patience instead of letting them turn us against one another. i hope we continue to appreciate the little things. i hope we make decisions that protect our well-being, our goals, and the trust we build together. and i hope that, as long as we're both happy and willing to keep choosing this relationship, we continue building a future that feels right for both of us.</p>
+
+                <p>i'm hoping the best for our future, mylovee. i'm hoping the best for our relationship, for the dreams we want to achieve, for the memories we have yet to make, and for the family we might someday have. i'm hoping for peaceful mornings, happy celebrations, meaningful conversations, and the kind of ordinary days that become precious only when we look back on them. i'm hoping that we get to experience the joy of seeing our hard work pay off, that we get to support each other through the moments when things don't go as planned, and that we learn to appreciate the life we build instead of always comparing it to somebody else's.</p>
+
+                <p>i hope our future is filled with laughter, but i also hope we learn how to comfort each other when laughter is difficult. i hope we experience success, but i also hope we learn that our worth isn't measured only by our achievements. i hope we get to fulfill our dreams, but i also hope we're patient with ourselves when things take longer than expected. i hope we have beautiful memories, but i also hope we learn to find meaning in the moments that aren't especially exciting. and i hope that through all of it, we never forget that we're human beings first, deserving of kindness, rest, respect, and understanding.</p>
+
+                <p>and, mylovee, i hope that whenever you think about your future, you feel excited about the life you're going to live, regardless of what it looks like. i want you to have dreams that belong to you. i want you to discover things that make your heart feel alive, to accomplish things that make you proud, and to become someone you love being. and if our dreams continue to align as we grow, i hope i get to stand beside you and celebrate the life you're creating. i hope i get to watch you become more confident, more comfortable with yourself, and more certain of the things that matter to you.</p>
+
+                <p>i want to support your happiness, not make you feel responsible for mine. i want to share my life with you, not ask you to give up the life you want for yourself. i want us to be able to encourage each other while still respecting the fact that we are two different people who have chosen to walk alongside one another. because i don't want our future to be beautiful only in my imagination. i want it to be something we both genuinely want, something we both help build, and something that gives both of us room to be happy.</p>
+
+                <p>and if there are times when we're scared about what comes next, i hope we can talk about those fears without feeling ashamed. if our plans change, i hope we can adjust together. if one of us needs more time, i hope we can be patient. if we encounter a problem we don't know how to solve, i hope we can ask for help instead of pretending we have all the answers. i want us to understand that being committed to each other doesn't mean we have to know everything about the future. it means being willing to communicate honestly about the present and make thoughtful choices about what comes next.</p>
+
+                <p>mylovee, i don't want to make you promises just because they sound beautiful when written in a message. i want to make promises that i can work toward keeping. i promise to keep learning about you instead of assuming i already know everything. i promise to try to communicate honestly instead of expecting you to read my mind. i promise to respect your feelings, your individuality, and your dreams. i promise to take responsibility when i make mistakes and to work on the things that need to change. i promise to keep showing appreciation for you, even when we've been together long enough that certain things begin to feel familiar.</p>
+
+                <p>and when i say that i want a future with you, i mean that i hope we can keep choosing each other freely, not out of fear, pressure, or obligation, but because the relationship we're building continues to bring meaning, care, and happiness into both our lives. i want us to have a love that we can be proud of, one that allows us to be honest about our imperfections and still encourages us to become better. i want us to know that we can have our own lives and still make room for each other, that we can experience difficult emotions without turning them into weapons, and that we can continue to grow without losing sight of the respect we owe one another.</p>
+
+                <p>i love you so much, bebii. more than i can explain in one message, more than i can fit into a single conversation, and more than these words will ever fully show. and i know that saying “more than words can explain” might sound like something people say when they run out of things to write, HAHAHA, but it's honestly the closest thing i can think of. because every time i try to explain how much you mean to me, i remember another little reason i'm grateful for you, and suddenly i'm writing another paragraph all over again.</p>
+
+                <p>maybe i'll never find the perfect words to explain what it's like to love you. maybe i'll keep repeating myself, telling you how beautiful you are to me, how much i appreciate you, how much i hope for our future, and how grateful i am that you're part of my life. but if i have to spend years finding new ways to tell you something my heart already knows, then i hope those years give us countless opportunities to say it to each other.</p>
+
+                <p>i want to keep telling you i love you when we're happy, when we're proud of ourselves, when we're celebrating something important, and when we're simply doing nothing together. i want to keep reminding you that you're appreciated even when there isn't a special occasion. i want to keep asking about your day, listening to your thoughts, and sharing mine with you. i want to keep making memories that we'll look back on someday and smile about. and i hope that when life gets busy, we remember that the little things are often what make a relationship feel loved.</p>
+
+                <p>and if someday you find this message again, maybe on a random afternoon when you're missing me or when you're thinking about how far we've come, i hope you can read it and feel the sincerity behind it. i hope you remember that when i wrote these words, i wasn't trying to describe a perfect girl or a perfect relationship. i was trying to explain how much one particular person means to me. i was trying to tell you that i see you as a whole person, with your own history, your own dreams, your own strengths, and your own struggles, and that i'm grateful for the opportunity to know you more deeply.</p>
+
+                <p>i hope you remember that you never needed to be perfect to deserve love. you never needed to hide your past to be worthy of a future. you never needed to pretend that everything was okay just to make yourself easier to understand. and you never needed to prove your worth by giving more than you could handle. you were already worthy of kindness, respect, and happiness before our paths crossed, and you'll continue to be worthy of those things no matter what life brings.</p>
+
+                <p>if there's one thing i hope my love gives you, it's not the feeling that you can never be hurt again. i wish i could protect you from every painful experience, but i know i can't control everything that happens in life. instead, i hope our relationship reminds you that you can be loved without being controlled, understood without being judged, and supported without losing your independence. i hope you feel safe enough to be honest, confident enough to express your needs, and comfortable enough to be yourself.</p>
+
+                <p>i want to be someone who adds warmth to your life, bebii. someone who encourages you to keep going after your dreams, who celebrates your happiness, who listens when you need to talk, and who respects you even when we don't see things the same way. i want to love you in a way that doesn't ask you to become smaller for my comfort. i want to love you in a way that allows both of us to grow, learn, and experience life while continuing to nurture the connection we've chosen.</p>
+
+                <p>and, honestly, i hope i get to see so many versions of you throughout our lives. the version of you who is excited about a new dream. the version who is proud after accomplishing something difficult. the version who discovers a new interest and can't stop talking about it. the version who learns from a mistake and becomes wiser because of it. the version who grows more confident in herself. and even the version who has a difficult day and needs some time to rest. i hope i get to know those versions of you, not because i expect you to stay the same, but because i'm excited to discover the person you're becoming.</p>
+
+                <p>i hope you get to see so many versions of me, too. i hope you see me learning, improving, becoming more patient, and figuring out how to express myself better. i hope you can tell me when i'm doing something wrong without being afraid that i'll refuse to listen. i hope we can encourage each other to become people who know how to love more thoughtfully than we did yesterday. and i hope that as we grow, our relationship grows with us, becoming something more understanding and more meaningful because of the effort we both put into it.</p>
+
+                <p>mylovee, i think that's one of the things i want most for us. not a life where nothing ever goes wrong, but a life where we keep learning how to face things with honesty and care. not a relationship where we never disagree, but one where disagreement doesn't erase our respect for each other. not a future where every dream comes true exactly when we want it to, but one where we continue to encourage each other and appreciate the progress we make. and not a love that depends on everything being perfect, but one that continues to be nurtured through real choices, real conversations, and real effort.</p>
+
+                <p>i hope for our future family. i hope for our future home. i hope for the beautiful memories we haven't made yet and the ordinary moments that will someday become some of our favorite memories. i hope for the chance to celebrate your accomplishments, to watch you pursue the things that make you happy, and to share my own dreams with you. i hope for the chance to build traditions together, discover new things, and create a life that reflects the values we both care about. and if we are fortunate enough to reach that chapter together, i hope we look around at the life we've built and feel grateful not because it is perfect, but because it is ours.</p>
+
+                <p>i hope that someday, when we think about the people we used to be, we'll smile at how much we've learned. i hope we'll be proud of the patience we developed, the mistakes we learned from, the dreams we pursued, and the ways we helped each other grow. i hope we can look at each other and say, “we really did our best, didn't we?” and know that even though there were things we couldn't control, we made an honest effort to treat each other with love and respect.</p>
+
+                <p>and if the future ever feels far away, bebii, i hope we remember that we don't have to reach every dream today. we can take things one step at a time. we can enjoy our current chapter while preparing for the next one. we can celebrate the little things, learn from the difficult things, and appreciate the fact that we're still discovering life. i don't want us to rush through the present just because we're excited about the future. i want to enjoy loving you now, in this chapter of our lives, while continuing to hope and work toward the chapters we dream of sharing.</p>
+
+                <p>i love you so much, mylovee. i love you in the little moments when i randomly think of you. i love you when i remember something that made you laugh. i love you when i imagine telling you something about my day. i love you when i think about the dreams you've shared with me. and i love you when i think about how much there still is for us to learn about each other.</p>
+
+                <p>i love you when i'm feeling expressive and have a thousand things to say, and i love you even when i'm quiet because i don't know how to put my feelings into words. i love you in the moments when everything feels easy, and i want to keep learning how to show that love with patience and understanding when things are difficult. i love you not because i expect you to make every day beautiful, but because sharing the ordinary parts of life with you has become something i genuinely cherish.</p>
+
+                <p>and, bebii, if there is ever a time when you wonder whether i really mean all these things, i hope you'll look beyond this message and see the effort i make to live by them. words can be beautiful, but i want my actions to give those words meaning. i want you to see my sincerity in the way i listen to you, the way i respect you, the way i handle disagreements, and the way i keep working on myself. i want to show you that when i say i hope for our future, i'm not only dreaming about a day far away. i'm also thinking about the choices i make today and how they can help us build a healthier relationship.</p>
+
+                <p>i can't promise that i'll always know the right thing to say, but i can try to listen before responding. i can't promise that i'll never make a mistake, but i can take responsibility and learn from it. i can't promise that life will always be gentle with us, but i can do my best to treat you with gentleness. and i can't promise that our future will unfold exactly as we imagine, but i can promise to be honest about my intentions and to keep making thoughtful choices as we discover what that future becomes.</p>
+
+                <p>because, mylovee, i don't want to love you only in the beautiful stories i imagine in my head. i want to love you in the life we're actually living. in the conversations that require patience. in the decisions that require thought. in the moments when we need to understand each other better. in the days when we're busy with our own responsibilities. and in the quiet little moments when all we really need is to know that we're appreciated.</p>
+
+                <p>i hope the best for us. i hope the best for you as an individual, for me as an individual, for the relationship we're building, and for the family we may someday have. i hope we continue to make choices that help us become healthier and happier people. i hope we never lose our curiosity about each other. i hope we remain willing to learn, willing to communicate, and willing to give each other the respect that a meaningful relationship needs. and i hope that when we look toward the future, we can do so with excitement without forgetting to appreciate everything we're learning right now.</p>
+
+                <p>and if i could leave you with one last thought, bebii, it would be this: i don't know every detail of the life ahead of us, but i know that the thought of sharing beautiful moments with you makes me happy. i hope we get to see our dreams become real. i hope we get to experience the joy of building a home and a family if that's what we both continue to want. i hope we get to celebrate the little milestones that nobody else would understand as deeply as we do. and i hope that whatever our future looks like, we can look back and feel proud of how we treated each other along the way.</p>
+
+                <p>thank you for being part of my life, mylovee. thank you for letting me know you, for sharing pieces of yourself with me, and for giving me the opportunity to create memories with you. thank you for the moments that make me smile without even realizing it. thank you for the conversations that give me something to look forward to. and thank you for being someone who has inspired me to think more deeply about the kind of person i want to become and the kind of future i hope to build.</p>
+
+                <p>i hope i get to thank you for many more years, in many different ways. maybe through long messages like this one, maybe through little surprises, maybe through the way i remember something important to you, or maybe through the quiet comfort of simply being there and listening. i hope my love becomes something you can feel in the everyday details of our relationship, not just something you read on your screen.</p>
+
+                <p>and if someday we're sitting together, older than we are now, talking about the dreams we used to have, i hope we can smile at this message. i hope you'll remember how much i wanted the best for us, how excited i was about the possibility of our future, and how sincerely i hoped we would continue growing together. maybe we'll have achieved some of the dreams we imagined, and maybe life will have surprised us with other beautiful things we never expected. either way, i hope we'll have learned to appreciate the life we've built and the people we've become.</p>
+
+                <p>i hope that when i look at you in that future, i won't just see the person i fell in love with. i'll also see the person i've had the privilege of knowing through so many chapters of life. i'll see the girl who once made me smile through a message, the person who shared her thoughts and dreams with me, and the woman who continued to grow into herself. and i hope you'll be able to look at me and see someone who tried to become a better partner, someone who listened, someone who learned, and someone who never stopped appreciating the opportunity to love you.</p>
+
+                <p>i know i say “i love you” so many times, bebii. maybe i'll say it tomorrow, the day after that, and on so many ordinary days that we eventually stop counting. but i hope that each time you hear those words, you can feel that i'm not just repeating a phrase. i'm reminding you of something i want to keep expressing through the way i treat you.</p>
+
+                <p>i love you, mylovee. i love you so much. i'm hoping for the best for our future, for our relationship, for our dreams, and for our future family. i'm hoping that we grow into people who know how to love each other with patience, honesty, and understanding. i'm hoping that we get to experience the beautiful moments we've imagined, while also learning how to face the difficult moments with care. and i'm hoping that we keep making choices that allow both of us to feel respected, appreciated, and free to become the people we want to be.</p>
+
+                <p>i hope our future is kind to us. i hope we make memories that we'll carry in our hearts for years. i hope we get to celebrate each other's achievements, comfort each other through disappointments, and laugh together over the smallest, most ridiculous things. i hope that if we have a family someday, we create a home where love is shown through patience, respect, understanding, and genuine care. and i hope that as we grow older, we never forget to make each other feel appreciated, even when life becomes busy and familiar.</p>
+
+                <p>but most of all, i hope that whatever dreams we eventually reach, we never lose the kindness that brought us closer in the first place. i hope we never forget to listen, never forget to apologize when we need to, and never forget that being loved should never mean having to give up who we are. i hope we continue to choose each other because we genuinely want to, and that we keep building a relationship that makes both of us feel safe enough to be honest, strong enough to grow, and happy enough to look forward to tomorrow.</p>
+
+                <p>i love you so much, mylovee. more than these paragraphs can explain, more than one message can hold, and more than i can properly express when i'm simply sitting here thinking about you.</p>
+
+                <p>and if you ever ask me why i keep saying it, why i keep telling you i love you even though you've heard it so many times before, i'll probably smile and tell you that it's because my heart still has so much to say about you.</p>
+
+                <p>because i don't want to save my appreciation for some special day in the future. i want to tell you now. i want to remind you while we're still learning, while we're still growing, while we're still making memories, and while we still have so many beautiful possibilities ahead of us.</p>
+
+                <p>i want you to know that i'm grateful for you today, that i'm hopeful for us tomorrow, and that i genuinely wish for a future where we can look back on these days and smile at how far we've come.</p>
+
+                <p><strong>i'm hoping for the best for our future, our future family, and our relationship, mylovee. i hope we get to build the life we dream about, one little step at a time. i hope we keep growing, keep understanding each other, and keep finding reasons to be grateful that our paths crossed. and i hope that one day, when we look back at the beginning of our story, we'll be able to say that we didn't just promise each other a beautiful future. we did our best to build one.</strong></p>
+
+                <p>i love you so, so much, bebii. please never forget that you were already worthy of love before i ever met you. i just feel incredibly lucky that i get to be someone who loves you now. and if life gives us the chance to keep choosing each other through all the different chapters ahead, i hope i get to keep showing you, in a thousand little ways, just how much you mean to me.</p>
+
+                <p><strong>i love you, mylovee. today, tomorrow, and in all the little moments in between. here's to us, to the future we're hoping for, to the family we might someday build, and to the love we're still learning how to make more beautiful every day.</strong> ♡</p>
+
+                <button class="love-button" onclick="showPopup('A little reminder: you are so loved, bebii. 💓')">
+                    A little reminder for you 💗
+                </button>
+
+            </article>
+
+            <div class="footer">
+                MADE WITH <span>LOVE</span>, JUST FOR YOU 💓
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<div class="popup" id="popup"></div>
+
+<script>
+let opened = false;
+let popupTimer;
+
+function openLetter() {
+    if (opened) return;
+    opened = true;
+
+    const letter = document.getElementById('letter');
+    letter.classList.add('visible');
+
+    document.querySelector('.open-btn').style.display = 'none';
+
+    const elements = [...letter.children].filter(element =>
+        element.tagName === 'P' || element.classList.contains('line')
+    );
+
+    elements.forEach((element, index) => {
+        setTimeout(() => {
+            element.classList.add('paragraph-show');
+        }, index * 35);
+    });
+
+    setTimeout(() => showPopup('I wish I could tell you all of this in person. 💓'), 1800);
+    setTimeout(() => showPopup('You deserve all the gentle love in the world, bebii. ☺️'), 6500);
+    setTimeout(() => showPopup('If only you knew how much I miss you. 💗'), 12000);
+    setTimeout(() => showPopup('Thank you for being part of my life. <33'), 18500);
+
+    setTimeout(() => {
+        letter.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 500);
+}
+
+function showPopup(message) {
+    const popup = document.getElementById('popup');
+    popup.textContent = message;
+    popup.classList.add('show');
+
+    clearTimeout(popupTimer);
+    popupTimer = setTimeout(() => {
+        popup.classList.remove('show');
+    }, 3000);
+}
+
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'floating-heart';
+    heart.textContent = '💓';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (12 + Math.random() * 15) + 'px';
+    heart.style.animationDuration = (7 + Math.random() * 6) + 's';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 13000);
+}
+
+setInterval(createHeart, 1000);
+</script>
+
+</body>
+</html>
